@@ -1,9 +1,11 @@
 {
   "name": "mdns",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "multicast DNS service discovery",
   "main": "./lib/mdns.js",
   "scripts": {
+    "build": "dotenv sh ./utils/build.sh",
+    "install": "node-pre-gyp install --fallback-to-build",
     "test": "node utils/testrun"
   },
   "keywords": [
@@ -13,19 +15,22 @@
     "mDNSResponder"
   ],
   "devDependencies": {
-    "ejs": "*",
-    "glob": "*",
-    "less": "*",
-    "minimatch": "*",
-    "mkdirp": "*",
-    "ncp": "*",
-    "nopt": "*",
-    "proxyquire": "^2.0.0",
-    "slide": "*"
+    "dotenv-cli": "^1.4.0",
+    "ejs": "^2.6.1",
+    "glob": "^7.1.3",
+    "less": "^3.9.0",
+    "minimatch": "^3.0.4",
+    "mkdirp": "^0.5.1",
+    "ncp": "^2.0.0",
+    "node-pre-gyp": "^0.12.0",
+    "node-pre-gyp-github": "^1.4.3",
+    "nopt": "^4.0.1",
+    "proxyquire": "^2.1.0",
+    "slide": "^1.1.6"
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/agnat/node_mdns.git"
+    "url": "http://github.com/Cycling74/node_mdns.git"
   },
   "homepage": "http://agnat.github.com/node_mdns",
   "bugs": {
@@ -78,8 +83,14 @@
     }
   ],
   "dependencies": {
-    "bindings": "~1.2.1",
     "nan": "^2.10.0"
+  },
+  "binary": {
+    "module_name": "dns_sd_bindings",
+    "module_path": "./lib/binding/{node_abi}-{platform}-{arch}",
+    "host": "https://github.com/Cycling74/node_mdns/releases/download/",
+    "remote_path": "v{version}",
+    "package_name": "{name}-{node_abi}-{platform}-{arch}.tar.gz"
   },
   "gypfile": true
 }

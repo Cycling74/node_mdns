@@ -9,6 +9,10 @@
 
 mdns adds multicast DNS service discovery, also known as zeroconf or bonjour to Node.js. It provides an object based interface to announce and browse services on the local network.
 
+## Disclaimer
+
+This is a fork of the `node_mdns` package with additional infrastructure changes to integrate it into Cycling '74's worfklow.
+
 ## Synopsis
 
 ```js
