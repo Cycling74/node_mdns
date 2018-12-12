@@ -1,10 +1,10 @@
 {
   "name": "mdns",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "multicast DNS service discovery",
   "main": "./lib/mdns.js",
   "scripts": {
-    "build": "sh ./utils/build.sh",
+    "build": "dotenv sh ./utils/build.sh",
     "install": "node-pre-gyp install --fallback-to-build",
     "test": "node utils/testrun"
   },
