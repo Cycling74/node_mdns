@@ -9,3 +9,7 @@ node_modules
 .pulse2.properties
 Release
 Debug
+
+# C74 add
+.env
+lib/binding
