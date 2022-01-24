@@ -9,4 +9,4 @@ npm test;
 node-pre-gyp configure;
 node-pre-gyp build;
 node-pre-gyp package testpackage;
-node-pre-gyp-github publish;
+node-pre-gyp publish;
