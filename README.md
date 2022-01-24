@@ -3,7 +3,7 @@
 * Package: mdns
 * Description: multicast DNS service discovery
 * Installation: `npm install mdns` (see below)
-* Documentation: [mdns user guide](http://agnat.github.com/node_mdns/user_guide.html)
+* Documentation: [mdns user guide](http://agnat.github.io/node_mdns/user_guide.html)
 * License: [MIT](http://github.com/agnat/node_mdns/blob/master/LICENSE)
 * Donations: [![Flattr this git repository](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=agnat&url=https://github.com/agnat/node_mdns&title=node_mdns&tags=github&category=software)
 
@@ -41,7 +41,7 @@ const all_the_types = mdns.browseThemAll(); // all_the_types is just another bro
 
 On Linux and other systems using the avahi daemon the avahi dns_sd compat library and its header files are required.  On debianesque systems the package name is `libavahi-compat-libdnssd-dev`, on fedoraesque systems the package is `avahi-compat-libdns_sd-devel`.  On other platforms Apple's [mDNSResponder](http://opensource.apple.com/tarballs/mDNSResponder/) is recommended. Care should be taken not to install more than one mDNS stack on a system.
 
-On Windows you are going to need Apples "Bonjour SDK for Windows". You can download it either from Apple (registration required) or various unofficial sources. Take your pick. After installing the SDK restart your computer and make sure the `BONJOUR_SDK_HOME` environment variable is set. You'll also need a compiler. Microsoft Visual Studio Express will do. On Windows node >=0.7.9 is required.
+On Windows you are going to need Apples "Bonjour SDK for Windows". You can download it either from [Apple](https://developer.apple.com/download/more/?=Bonjour%20SDK%20for%20Windows) (registration required) or various unofficial sources. Take your pick. After installing the SDK restart your computer and make sure the `BONJOUR_SDK_HOME` environment variable is set. You'll also need a compiler. Microsoft Visual Studio Express will do. On Windows node >=0.7.9 is required.
 
 mdns is available as a npm package:
 
@@ -71,7 +71,7 @@ In case you want to run or even publish your package using the development versi
 
 ## Documentation
 
-See the [user guide](http://agnat.github.com/node_mdns/user_guide.html).
+See the [user guide](http://agnat.github.io/node_mdns/user_guide.html).
 
 ## Contributors
 

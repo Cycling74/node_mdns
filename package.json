@@ -1,6 +1,6 @@
 {
   "name": "mdns",
-  "version": "2.5.1",
+  "version": "2.7.2",
   "description": "multicast DNS service discovery",
   "main": "./lib/mdns.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "type": "git",
     "url": "http://github.com/Cycling74/node_mdns.git"
   },
-  "homepage": "http://agnat.github.com/node_mdns",
+  "homepage": "http://agnat.github.io/node_mdns",
   "bugs": {
     "url": "http://github.com/agnat/node_mdns/issues"
   },
