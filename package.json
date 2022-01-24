@@ -88,8 +88,8 @@
   "binary": {
     "module_name": "dns_sd_bindings",
     "module_path": "./lib/binding/{node_abi}-{platform}-{arch}",
-    "host": "https://github.com/Cycling74/node_mdns/releases/download/",
-    "remote_path": "v{version}",
+    "host": "https://cycling74-node-prebuilt.s3.amazonaws.com",
+    "remote_path": "./node_mdns/v{version}",
     "package_name": "{name}-{node_abi}-{platform}-{arch}.tar.gz"
   },
   "gypfile": true
