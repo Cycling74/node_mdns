@@ -15,6 +15,7 @@
     "mDNSResponder"
   ],
   "devDependencies": {
+    "aws-sdk": "^2.1062.0",
     "dotenv-cli": "^1.4.0",
     "ejs": "^2.6.1",
     "glob": "^7.1.3",
