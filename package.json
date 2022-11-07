@@ -3,6 +3,7 @@
   "version": "2.7.2",
   "description": "multicast DNS service discovery",
   "main": "./lib/mdns.js",
+  "types": "./index.d.ts",
   "scripts": {
     "build": "dotenv sh ./utils/build.sh",
     "install": "node-pre-gyp install --fallback-to-build",
