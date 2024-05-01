@@ -20,7 +20,7 @@ jobs:
           sudo apt-get -y install avahi-daemon avahi-discover avahi-utils libnss-mdns mdns-scan libavahi-compat-libdnssd-dev
 
       - name: Build and upload
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.NODE_PRE_GYP_AWS_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.NODE_PRE_GYP_AWS_KEY }}
-        run: npm run build
+        run: |
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.NODE_PRE_GYP_AWS_ID }}" >> .env
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.NODE_PRE_GYP_AWS_KEY }}" >> .env
+          npm run build
