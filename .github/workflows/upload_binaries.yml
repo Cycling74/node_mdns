@@ -23,5 +23,4 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.NODE_PRE_GYP_AWS_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.NODE_PRE_GYP_AWS_KEY }}
-        run: |
-          sh ./utils/build.sh
+        run: npm run build
