@@ -24,5 +24,4 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.NODE_PRE_GYP_AWS_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.NODE_PRE_GYP_AWS_KEY }}
         run: |
-          sudo systemctl start avahi-daemon
           sh ./utils/build.sh
