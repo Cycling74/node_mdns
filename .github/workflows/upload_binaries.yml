@@ -1,6 +1,7 @@
 name: Upload pre-built binaries
 on: workflow_dispatch
 
+jobs:
   linux:
     runs-on: ubuntu-latest
     name: Build and Upload mdns binding
