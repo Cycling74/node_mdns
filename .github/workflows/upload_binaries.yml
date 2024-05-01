@@ -1,0 +1,25 @@
+name: Upload pre-built binaries
+on: workflow_dispatch
+
+  linux:
+    runs-on: ubuntu-latest
+    name: Build and Upload mdns binding
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.6.1'
+      
+      - name: Install MDNS tools
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install libavahi-compat-libdnssd-dev
+
+      - name: Build and upload
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.NODE_PRE_GYP_AWS_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.NODE_PRE_GYP_AWS_KEY }}
+        run: sh ./utils/build.sh
