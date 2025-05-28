@@ -85,7 +85,7 @@
   "dependencies": {
     "@mapbox/node-pre-gyp": "^1.0.11",
     "bindings": "^1.5.0",
-    "nan": "^2.18.0"
+    "nan": "^2.22.2"
   },
   "binary": {
     "module_name": "dns_sd_bindings",
