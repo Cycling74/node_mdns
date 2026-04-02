@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    name: Test (node-${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['16.x', '20.6.1', '22.18.0']
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install MDNS tools
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install avahi-daemon avahi-discover avahi-utils libnss-mdns mdns-scan libavahi-compat-libdnssd-dev
+
+      - name: Start avahi daemon
+        run: |
+          sudo service dbus start
+          sudo service avahi-daemon start
+          # Wait until avahi is ready to accept connections
+          timeout 10 sh -c 'until avahi-daemon --check; do sleep 0.5; done'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
