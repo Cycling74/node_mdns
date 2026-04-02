@@ -1,5 +1,9 @@
-name: Upload pre-built binaries
-on: workflow_dispatch
+name: Release
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -34,3 +38,22 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.NODE_PRE_GYP_AWS_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.NODE_PRE_GYP_AWS_KEY }}
         run: sh ./utils/build.sh
+
+  publish:
+    name: Publish to registry
+    runs-on: ubuntu-latest
+    environment: release
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.18.0'
+          registry-url: ${{ secrets.REGISTRY_URL }}
+
+      - run: npm ci --ignore-scripts
+
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_TOKEN }}

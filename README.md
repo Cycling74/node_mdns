@@ -13,6 +13,32 @@ mdns adds multicast DNS service discovery, also known as zeroconf or bonjour to 
 
 This is a fork of the `node_mdns` package with additional infrastructure changes to integrate it into Cycling '74's worfklow.
 
+## Contributing and releasing
+
+### Making changes
+
+1. Create a branch, make your changes, bump the version in `package.json`:
+   ```
+   npm version patch --no-git-tag-version
+   ```
+2. Open a PR against `master` — CI will run tests across Node 16, 20, and 22
+3. Once reviewed and merged, a maintainer cuts the release by tagging `master`:
+   ```
+   git pull && git tag v<version> && git push --follow-tags
+   ```
+
+### Publishing
+
+Pushing a `v*.*.*` tag triggers the **Release** workflow, which requires maintainer approval and then:
+
+1. Builds native binaries for `darwin-arm64`, `darwin-x64`, and `linux-x64` across Node 16, 20, and 22 and uploads them to S3
+2. Publishes the package to the internal npm registry
+
+To install from the internal registry:
+```
+npm install @cycling74/mdns
+```
+
 ## Synopsis
 
 ```js

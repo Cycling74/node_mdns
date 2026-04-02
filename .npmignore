@@ -1,2 +1,19 @@
+# credentials and local config
+.env
+.env.*
+
+# development and CI
+.github
+tests
+utils
+examples
 doc
+
+# build artifacts
 build
+out
+
+# legacy build tooling
+Makefile
+wscript
+node-waf.bat
