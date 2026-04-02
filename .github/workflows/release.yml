@@ -54,11 +54,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22.18.0'
-          registry-url: ${{ secrets.REGISTRY_URL }}
 
       - run: npm ci --ignore-scripts
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.18.0'
+          registry-url: ${{ secrets.REGISTRY_URL }}
 
       - run: npm publish
         env:
