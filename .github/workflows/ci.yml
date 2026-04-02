@@ -24,7 +24,11 @@ jobs:
           sudo apt-get -y install avahi-daemon avahi-discover avahi-utils libnss-mdns mdns-scan libavahi-compat-libdnssd-dev
 
       - name: Start avahi daemon
-        run: sudo service avahi-daemon start
+        run: |
+          sudo service dbus start
+          sudo service avahi-daemon start
+          # Wait until avahi is ready to accept connections
+          timeout 10 sh -c 'until avahi-daemon --check; do sleep 0.5; done'
 
       - name: Install dependencies
         run: npm ci
