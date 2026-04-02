@@ -5,6 +5,7 @@ jobs:
   build:
     name: Build and Upload (${{ matrix.os }}, node-${{ matrix.node-version }})
     runs-on: ${{ matrix.os }}
+    environment: release
     strategy:
       matrix:
         os: [macos-14, macos-13, ubuntu-latest]
