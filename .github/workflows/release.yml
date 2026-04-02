@@ -57,6 +57,8 @@ jobs:
           registry-url: ${{ secrets.REGISTRY_URL }}
 
       - run: npm ci --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
 
       - run: npm publish
         env:
