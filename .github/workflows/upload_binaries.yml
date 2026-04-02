@@ -2,9 +2,14 @@ name: Upload pre-built binaries
 on: workflow_dispatch
 
 jobs:
-  linux:
-    runs-on: ubuntu-latest
-    name: Build and Upload mdns binding
+  build:
+    name: Build and Upload (${{ matrix.os }}, node-${{ matrix.node-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-14, macos-13, ubuntu-latest]
+        node-version: ['16.x', '20.6.1', '22.18.0']
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -12,15 +17,19 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.6.1'
-      
-      - name: Install MDNS tools
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install MDNS tools (Linux)
+        if: runner.os == 'Linux'
         run: |
           sudo apt-get update
           sudo apt-get -y install avahi-daemon avahi-discover avahi-utils libnss-mdns mdns-scan libavahi-compat-libdnssd-dev
 
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
       - name: Build and upload
-        run: |
-          echo "AWS_ACCESS_KEY_ID=${{ secrets.NODE_PRE_GYP_AWS_ID }}" >> .env
-          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.NODE_PRE_GYP_AWS_KEY }}" >> .env
-          npm run build
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.NODE_PRE_GYP_AWS_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.NODE_PRE_GYP_AWS_KEY }}
+        run: sh ./utils/build.sh
